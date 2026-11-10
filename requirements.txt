@@ -1,0 +1,5 @@
+# GeophPy (0.32.2 nel notebook): installazione secondo la documentazione ufficiale
+numpy
+scipy
+matplotlib
+jupyter
