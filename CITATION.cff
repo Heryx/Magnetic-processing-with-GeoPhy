@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "Magnetic-processing-with-GeoPhy: a GeophPy workflow for processing magnetometric (gradiometry) data"
+type: software
+version: 1.0.0
+date-released: 2026-11-10
+license: MIT
+authors:
+  - family-names: Guarino
+    given-names: Giuseppe
+repository-code: "https://github.com/Heryx/Magnetic-processing-with-GeoPhy"
+keywords:
+  - archaeological geophysics
+  - magnetometry
+  - gradiometry
+  - GeophPy
