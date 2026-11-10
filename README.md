@@ -1,40 +1,40 @@
 # Magnetic-processing-with-GeoPhy
 
-Workflow in Jupyter Notebook per l'elaborazione di dati magnetometrici (gradiometria, valori in nT) con la libreria **GeophPy** (versione usata nel notebook: 0.32.2).
+Jupyter Notebook workflow for processing magnetometric data (gradiometry, values in nT) with the **GeophPy** library (version used in the notebook: 0.32.2).
 
-## Contenuto
+## Contents
 
 ```
-notebooks/Geomag_elab_grad_nT.ipynb   # workflow completo (output rimossi)
-data/raw/                             # dati XYZ di input (non versionati)
-outputs/                              # mappe, istogrammi, PDF (non versionati)
+notebooks/Geomag_elab_grad_nT.ipynb   # full workflow (outputs cleared)
+data/raw/                             # input XYZ data (not versioned)
+outputs/                              # maps, histograms, PDFs (not versioned)
 requirements.txt
 ```
 
-## Sequenza di elaborazione
+## Processing sequence
 
-1. Importazione del file ASCII (`.XYZ`, separatore spazio; colonne x, y, z = gradiente; la colonna 4, campo totale, è predisposta ma commentata).
-2. `threshold` (−10/+10) e `peakfilt` (mediana, halfwidth 5, soglia 15, modalità assoluta).
-3. `destripecon` (additivo, riferimento mediana) e `zeromeanprofile` (mediana).
-4. Interpolazione lineare e filtro di Wallis (`wallisfilt`, finestra 9×9).
-5. Mappe di correlazione tra profili (`correlation_plotmap`, `correlation_plotsum`) e profili medi cross-track (`meantrack_plot`).
-6. Statistiche descrittive (media, mediana, deviazione standard, skewness, curtosi) e istogramma.
+1. Import of the ASCII file (`.XYZ`, space-delimited; columns x, y, z = gradient; column 4, total field, is set up but commented out).
+2. `threshold` (−10/+10) and `peakfilt` (median, halfwidth 5, threshold 15, absolute mode).
+3. `destripecon` (additive, median reference) and `zeromeanprofile` (median).
+4. Linear interpolation and Wallis filter (`wallisfilt`, 9×9 window).
+5. Profile cross-correlation maps (`correlation_plotmap`, `correlation_plotsum`) and mean cross-track profiles (`meantrack_plot`).
+6. Descriptive statistics (mean, median, standard deviation, skewness, kurtosis) and histogram.
 
-Sono presenti, ma commentati, `festoonfilt`, `ploughfilt` e `medianfilt`.
+`festoonfilt`, `ploughfilt` and `medianfilt` are included but commented out.
 
-## Uso
+## Usage
 
-1. Creare un ambiente con le dipendenze di `requirements.txt` e installare GeophPy seguendo la documentazione ufficiale della libreria.
-2. Copiare il file `.XYZ` in `data/raw/` e impostare `file_path` nella cella 2 del notebook.
-3. Eseguire le celle in ordine: i filtri modificano `grad_ds` in place, perciò rieseguire una cella intermedia senza ripartire dall'inizio applica il filtro due volte.
+1. Create an environment with the dependencies in `requirements.txt` and install GeophPy following the library's official documentation.
+2. Copy the `.XYZ` file into `data/raw/` and set `file_path` in cell 2 of the notebook.
+3. Run the cells in order. The filters modify `grad_ds` in place, so re-running an intermediate cell without restarting from the top applies that filter twice.
 
-## Note e limiti
+## Notes and limitations
 
-- I parametri (soglie, finestre, target del Wallis) sono quelli del caso di studio originale e vanno riadattati a ogni rilievo.
-- I titoli delle figure riportano il nome del sito del caso di studio (Rocavecchia).
-- Le unità non sono coerenti nel notebook: i file sono nominati in nT, le etichette dell'istogramma indicano nT/m. Da verificare in base allo strumento e al formato di esportazione.
-- Il notebook salva i file con nomi fissi nella cartella di lavoro: i file con lo stesso nome vengono sovrascritti.
+- The parameters (thresholds, window sizes, Wallis targets) are those of the original case study and must be adapted to each survey.
+- Figure titles carry the name of the case-study site (Rocavecchia).
+- Units are not consistent within the notebook: files are named in nT, whereas histogram labels read nT/m. This should be checked against the instrument and the export format.
+- The notebook saves files under fixed names in the working directory, so files with the same name are overwritten.
 
-## Licenza
+## License
 
-MIT (vedi `LICENSE`). Verificare la compatibilità con la licenza di GeophPy.
+MIT (see `LICENSE`). Compatibility with the GeophPy license should be verified.
