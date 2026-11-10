@@ -1,5 +1,7 @@
 # Magnetic-processing-with-GeoPhy
 
+[![DOI](https://zenodo.org/badge/1452708457.svg)](https://doi.org/10.5281/zenodo.24110955)
+
 Jupyter Notebook workflow for processing magnetometric data (gradiometry, values in nT) with the **GeophPy** library (version used in the notebook: 0.32.2).
 
 ## Contents
